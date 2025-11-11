@@ -3,8 +3,14 @@ export default function Hero() {
   return (
     <section className="relative flex flex-col items-center justify-center min-h-screen text-center bg-[#f0f4f4] px-6">
       {/* Navbar */}
-      <header className="absolute top-0 left-0 w-full flex justify-between items-center px-10 py-6">
-        <Image src="" alt="Trionn Logo" className="h-8" />
+      <header className="absolute top-0 left-0 w-full flex justify-around items-center px-10 py-6">
+        <Image
+          src="/assets/images/logo.svg"
+          height="60"
+          width="100"
+          alt="Trionn Logo"
+          className="h-8"
+        />
 
         <div className="flex items-center gap-4">
           {/* Light/Dark toggle + Stats icon placeholders */}
@@ -17,7 +23,7 @@ export default function Hero() {
 
           {/* Menu button */}
           <button className="flex items-center gap-2 text-sm font-medium">
-            MENU <span className="text-xl font-bold">—</span>
+            MENU <span className="text-xl font-bold">|||</span>
           </button>
         </div>
       </header>
@@ -25,7 +31,7 @@ export default function Hero() {
       {/* Hero Text */}
       <div className="mt-24 md:mt-40">
         <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-800 leading-tight">
-          ROAR IN THE <br className="hidden md:block" /> DIGITAL WILDERNESS.
+          ROAR IN THE <br className="hidden md:block" /> DIGITAL WILDNESS
         </h1>
         <p className="mt-6 text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
           WE ROAR WITH SUCCESS, DELIVERING THE TRIONN® THROUGH VERSATILE DESIGN,
@@ -47,7 +53,9 @@ export default function Hero() {
       <div className="absolute bottom-32 flex flex-col items-center">
         <div className="animate-bounce text-2xl text-gray-600">↓</div>
         <Image
-          src=""
+          src="/assets/images/lion.svg"
+          height="30"
+          width="30"
           alt="Work preview"
           className="mt-8 w-60 h-36 object-cover rounded-full shadow-lg"
         />
