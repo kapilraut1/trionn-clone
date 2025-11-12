@@ -17,7 +17,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-[#f0f4f4] text-gray-800 overflow-hidden min-h-screen">
+    <main className="bg-[#f0f4f4] text-gray-800 overflow-hidden min-h-screen dark:bg-[#121315] dark:text-white">
       {loading ? <Loading /> : <Navbar />}
     </main>
   );

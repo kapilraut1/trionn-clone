@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Theme from "./Theme";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +25,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 w-full flex items-center justify-between px-6 md:px-12 py-6 z-50">
       <div className="text-2xl tracking-wider font-semibold text-[#d6f9f9] select-none">
         <Image
-          className="brightness-0"
+          className="brightness-0 dark:brightness-100"
           src="assets/images/logo.svg"
           alt="Hello"
           width="100"
@@ -34,7 +35,7 @@ export default function Navbar() {
       </div>
       <div className="flex items-center gap-4">
         <button className="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center">
-          🌙
+          <Theme />
         </button>
         <button className="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center">
           📊
@@ -60,7 +61,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Fullscreen Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
