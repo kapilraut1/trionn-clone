@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Theme from "./Theme";
+import { AudioLines } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +23,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full flex items-center justify-between px-6 md:px-12 py-6 z-50">
+    <nav className="fixed top-0 left-0 w-full flex items-center justify-between px-18 md:px-12 py-6 z-50 ">
       <div className="text-2xl tracking-wider font-semibold text-[#d6f9f9] select-none">
         <Image
           className="brightness-0 dark:brightness-100"
@@ -34,15 +35,18 @@ export default function Navbar() {
         />
       </div>
       <div className="flex items-center gap-4">
-        <button className="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center">
-          <Theme />
-        </button>
-        <button className="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center">
-          📊
+        {/* 1. Theme Component: Used directly. It is already a button and fully styled. */}
+        <Theme />
+
+        <button
+          className="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center"
+          aria-label="Play video preview"
+        >
+          <AudioLines className="dark:text-white text-black" size={20} />
         </button>
       </div>
 
-      <div className="flex items-center gap-2 text-sm font-medium">
+      <div className="flex items-center gap-2 text-sm font-medium font-[Dirtyline 36Daysoftype 2022]">
         MENU
         <button
           onClick={() => setIsOpen(!isOpen)}
