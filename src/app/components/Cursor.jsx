@@ -2,48 +2,63 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-const Cursor = () => {
-  const cursorRef = useRef(null);
+export default function BlurryCursor({ isActive }) {
+  const mouse = useRef({ x: 0, y: 0 });
+  const delayedMouse = useRef({ x: 0, y: 0 });
+  const rafId = useRef(null);
+  const circle = useRef();
+  const size = isActive ? 400 : 30;
+
+  const lerp = (x, y, a) => x * (1 - a) + y * a;
+
+  const manageMouseMove = (e) => {
+    const { clientX, clientY } = e;
+
+    mouse.current = {
+      x: clientX,
+      y: clientY,
+    };
+  };
+
+  const animate = () => {
+    const { x, y } = delayedMouse.current;
+
+    delayedMouse.current = {
+      x: lerp(x, mouse.current.x, 0.075),
+      y: lerp(y, mouse.current.y, 0.075),
+    };
+
+    moveCircle(delayedMouse.current.x, delayedMouse.current.y);
+
+    rafId.current = window.requestAnimationFrame(animate);
+  };
+
+  const moveCircle = (x, y) => {
+    gsap.set(circle.current, { x, y, xPercent: -50, yPercent: -50 });
+  };
 
   useEffect(() => {
-    const cursor = cursorRef.current;
-
-    const xMove = gsap.quickTo(cursor, "x", { duration: 0.25, ease: "power3" });
-    const yMove = gsap.quickTo(cursor, "y", { duration: 0.25, ease: "power3" });
-
-    const mouseMove = (e) => {
-      xMove(e.clientX);
-      yMove(e.clientY);
-      console.log(e);
-    };
-
-    window.addEventListener("mousemove", mouseMove);
-
+    animate();
+    window.addEventListener("mousemove", manageMouseMove);
     return () => {
-      window.removeEventListener("mousemove", mouseMove);
+      window.removeEventListener("mousemove", manageMouseMove);
+      window.cancelAnimationFrame(rafId.current);
     };
-  }, []);
+  });
 
   return (
-    <>
+    <div>
       <div
-        ref={cursorRef}
-        className="
-          cursor-none
-          fixed top-0 left-0
-          h-6 w-6
-          bg-black
-          rounded-full
-          z-index:9999
-          pointer-events-none
-          mix-blend-difference
-        "
         style={{
-          transform: "translate(-50%, -50%)",
+          backgroundColor: "#BCE4F2",
+          width: size,
+          height: size,
+          filter: `blur(${isActive ? 30 : 0}px)`,
+          transition: `height 0.3s ease-out, width 0.3s ease-out, filter 0.3s ease-out`,
         }}
-      ></div>
-    </>
+        className="top-0 left-0 fixed rounded-full mix-blend-difference pointer-events-none"
+        ref={circle}
+      />
+    </div>
   );
-};
-
-export default Cursor;
+}

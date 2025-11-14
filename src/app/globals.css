@@ -3,3 +3,6 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 
+* {
+  cursor: none !important;
+}
