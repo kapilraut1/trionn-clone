@@ -7,31 +7,31 @@ const projects = [
   {
     title: "Quantum Launch",
     tags: ["Branding", "Web Dev"],
-    src: "/assets/images/project1.webp",
+    src: "/assets/images/works/imusic/imusic-main-landscape.webp",
     size: "col-span-1",
   },
   {
     title: "Urban Living",
     tags: ["UI/UX", "Mobile App"],
-    src: "/assets/images/project2.webp",
+    src: "/assets/images/works/loftloom/loftloom-main-landscape.webp",
     size: "col-span-1",
   },
   {
     title: "Aura Streaming",
     tags: ["Motion", "Branding"],
-    src: "/assets/images/project3.webp",
+    src: "/assets/images/works/loftloom/loftloom-main-landscape.webp",
     size: "md:col-span-2",
   },
   {
     title: "FinTech Dashboard",
     tags: ["Web Dev", "UI/UX"],
-    src: "/assets/images/project4.webp",
+    src: "/assets/images/works/loftloom/loftloom-main-landscape.webp",
     size: "md:col-span-2",
   },
   {
     title: "Future Retail",
     tags: ["Branding", "Strategy"],
-    src: "/assets/images/project5.webp",
+    src: "/assets/images/works/loftloom/loftloom-main-landscape.webp",
     size: "col-span-1",
   },
 ];

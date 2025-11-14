@@ -7,7 +7,12 @@ module.exports = {
     "./components/**/*.{js,jsx,ts,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        inter: "var(--font-interTight)",
+        dirty: "var(--font-dirtyline)",
+      },
+    },
   },
   plugins: [],
 };

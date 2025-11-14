@@ -42,7 +42,7 @@ export default function Navbar() {
           className="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center"
           aria-label="Play video preview"
         >
-          <AudioLines className="dark:text-white text-black" size={20} />
+          <AudioLines className="dark:text-gray text-black" size={20} />
         </button>
       </div>
 

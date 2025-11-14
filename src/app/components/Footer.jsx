@@ -30,11 +30,10 @@ export default function Footer() {
   const torchX = useTransform(smoothX, (latestX) => latestX - 25);
   const torchY = useTransform(smoothY, (latestY) => latestY - 25);
 
-  // Function to handle mouse movement
   const handleMouseMove = (event) => {
     const rect = event.currentTarget.getBoundingClientRect();
-    x.set(event.clientX - rect.left); // X position relative to the footer
-    y.set(event.clientY - rect.top); // Y position relative to the footer
+    x.set(event.clientX - rect.left);
+    y.set(event.clientY - rect.top);
   };
 
   const scrollToTop = () => {
@@ -44,20 +43,21 @@ export default function Footer() {
   return (
     <footer
       className={`relative py-12 md:py-16 bg-white dark:bg-[${TR_DARK}] border-t border-gray-300 dark:border-gray-700 overflow-hidden`}
-      onMouseMove={handleMouseMove} // Attach mouse listener to the footer
+      onMouseMove={handleMouseMove}
     >
-      {/* --- Dynamic Background Logo and Torchlight Animation --- */}
       <motion.div className="absolute inset-0 z-0 pointer-events-none">
-        {/* 4. Large Faded TRIONN Background Logo (Replace with your actual image/SVG if needed) */}
         <div
           className="absolute inset-0 opacity-10 dark:opacity-5 flex items-center justify-center text-[18rem] md:text-[30rem] lg:text-[40rem] font-extrabold text-[#17181A] dark:text-white select-none pointer-events-none"
           style={{ lineHeight: 0.8 }}
         >
-          {/* Placeholder for the large TRIONN background logo/text */}
-          TRIONN
+          <Image
+            src="/media/footer-logo-dark.01be769b.svg"
+            alt="The image of the footer"
+            height={75}
+            width={355}
+          />
         </div>
 
-        {/* 5. Animated Torchlight (Follows the cursor) */}
         <motion.div
           style={{ x: torchX, y: torchY }}
           className="absolute w-[50px] h-[50px] pointer-events-none" // Match the size used in offset calculation
@@ -72,9 +72,7 @@ export default function Footer() {
         </motion.div>
       </motion.div>
 
-      {/* --- Static Content (Needs z-20 to sit above the animation) --- */}
       <div className="tr__container mx-auto px-4 relative z-20">
-        {/* Contact Rows */}
         <div className="flex justify-between items-start md:items-center flex-col md:flex-row gap-8">
           <div className="flex flex-col md:flex-row gap-8 md:gap-16">
             <FooterItem>
@@ -128,7 +126,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
         <motion.p
           className="mt-12 text-sm opacity-50 text-[#17181A] dark:text-white"
           initial={{ opacity: 0 }}

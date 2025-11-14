@@ -2,134 +2,173 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-// Animation Variants for staggered reveal
 const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.3,
-    },
+    transition: { staggerChildren: 0.06, delayChildren: 0.2 },
   },
 };
+
 const item = {
   hidden: { y: 40, opacity: 0 },
   show: {
     y: 0,
     opacity: 1,
-    transition: {
-      ease: [0.6, 0.0, 0.1, 1.0],
-      duration: 1.0,
-    },
+    transition: { duration: 0.9, ease: [0.6, 0, 0.1, 1] },
   },
-};
-
-// --- Reusable Animated Button Component ---
-const AnimatedButton = ({
-  text,
-  href,
-  className = "",
-  variants,
-  isPrimary = true,
-}) => {
-  // Tailwind Class for TRIONN's Light Theme Buttons
-  const buttonClasses = isPrimary
-    ? "border-[#17181A] text-[#17181A] hover:bg-[#17181A] hover:text-white"
-    : "border-[#17181A] text-[#17181A] hover:bg-[#17181A] hover:text-white";
-
-  return (
-    <motion.a
-      href={href}
-      className={`relative overflow-hidden inline-block px-10 py-4 text-lg font-medium border-2 rounded-full transition-colors duration-500 ${buttonClasses} ${className}`}
-      initial={{ scale: 1 }}
-      whileHover={{ scale: 1.05 }}
-      transition={{ type: "spring", stiffness: 300, damping: 15 }}
-      variants={variants}
-    >
-      {text}
-    </motion.a>
-  );
 };
 
 export default function HeroBanner() {
   return (
     <motion.section
-      className="tr__banner pt-40 pb-20 min-h-[90vh] flex items-center justify-center bg-gray-50 dark:bg-[#17181A]"
       variants={container}
       initial="hidden"
       animate="show"
+      className="
+        min-h-[90vh]
+        pt-36 pb-20
+        flex flex-col items-center justify-center
+        bg-[#eef2f3]
+        dark:bg-[#17181A]
+        overflow-hidden
+      "
     >
-      <div className="tr__container mx-auto px-4 text-[#17181A] dark:text-white">
-        <h1 className="text-center font-extrabold leading-none uppercase max-w-6xl mx-auto">
-          <motion.span
-            variants={item}
-            className="block text-8xl md:text-[10rem] lg:text-[14rem] tracking-tight"
-          >
-            ROAR IN THE
-          </motion.span>
-          <motion.span
-            variants={item}
-            className="block text-8xl md:text-[10rem] lg:text-[14rem] tracking-tight"
-          >
-            DIGITAL WILDERNESS.
-          </motion.span>
-        </h1>
-
-        <motion.p
+      {/* HEADLINE */}
+      <h1
+        className="
+          text-center
+          font-dirtyline
+          font-normal
+          tracking-[-0.04em]
+          leading-[0.85]
+        "
+      >
+        <motion.span
           variants={item}
-          className="text-center max-w-2xl mx-auto mt-8 mb-16 text-lg opacity-80"
+          className="
+            block
+            text-[3.8rem]
+            sm:text-[5rem]
+            md:text-[5.2rem]
+            lg:text-[6rem]
+            xl:text-[7rem]
+            2xl:text-[8.125rem]
+          "
         >
-          <span>We roar with success, delivering the TRIONN® </span>
-          <span>through versatile design, branding and the latest </span>
-          <span>tech development to companies.</span>
-        </motion.p>
+          ROAR IN THE
+        </motion.span>
 
-        {/* Scroll Down Arrow */}
-        <motion.p variants={item} className="text-center mb-16">
-          <a href="#work" aria-label="Scroll down to work section">
-            <Image
-              alt="Move Down Arrow"
-              loading="lazy"
-              width={24}
-              height={24}
-              className="opacity-40"
-              src="/media/move-down.31fd25f2.svg"
-            />
-          </a>
-        </motion.p>
+        <motion.span
+          variants={item}
+          className="
+            block
+            text-[3.8rem]
+            sm:text-[5rem]
+            md:text-[5.2rem]
+            lg:text-[6rem]
+            xl:text-[7rem]
+            2xl:text-[8.125rem]
+          "
+        >
+          DIGITAL WILDERNESS.
+        </motion.span>
+      </h1>
 
-        {/* Button Group and Center Image */}
-        <div className="flex justify-center items-end gap-10 lg:gap-20">
-          <AnimatedButton
-            text="Explore work"
-            href="/work"
-            variants={item}
-            className="z-10"
-          />
+      {/* SUBTEXT */}
+      <motion.p
+        variants={item}
+        className="
+          max-w-2xl
+          mx-auto
+          mt-8
+          text-center
+          font-inter
+          opacity-70
+          text-[1rem]
+          sm:text-lg
+        "
+      >
+        We roar with success, delivering the TRIONN® through versatile design,
+        branding and modern tech development.
+      </motion.p>
 
-          {/* Center Image/Video Placeholder */}
-          <motion.div variants={item} className="hidden sm:block z-10 -mt-20">
-            <div className="w-56 h-32 rounded-lg border-2 border-black overflow-hidden relative shadow-2xl">
-              {/* Replace with laptop/video preview image */}
-              <Image
-                alt="Laptop Preview"
-                src="/assets/images/works/imusic/imusic-main-landscape.webp"
-                width={300}
-                height={180}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </motion.div>
+      {/* ARROW */}
+      <motion.div variants={item} className="mt-8">
+        <Image
+          src="/media/move-down.31fd25f2.svg"
+          width={32}
+          height={32}
+          alt="Scroll down"
+          className="opacity-40 mx-auto"
+        />
+      </motion.div>
 
-          <AnimatedButton
-            text="Get in touch"
-            href="/contact"
-            variants={item}
-            className="z-10"
-          />
+      {/* BUTTONS & CENTER IMAGE */}
+      <motion.div
+        variants={item}
+        className="
+    mt-24
+    w-full
+    flex items-center justify-between
+    relative
+    px-6 sm:px-12 lg:px-20
+  "
+      >
+        {/* LEFT BUTTON */}
+        <div
+          className="
+      border border-black dark:border-white
+      px-8 py-4
+      rounded-full
+      text-lg
+      font-inter
+      hover:bg-black hover:text-white
+      dark:hover:bg-white dark:hover:text-black
+      transition-all
+    "
+        >
+          Explore work
         </div>
-      </div>
+
+        {/* CENTER FLOATING IMAGE */}
+        <div className="hidden md:block absolute left-1/2 top-[90%] -translate-x-1/2">
+          <div
+            className="
+        w-72 h-44
+        rounded-2xl
+        overflow-hidden
+        border border-black/30 dark:border-white/20
+        shadow-xl
+        bg-white dark:bg-[#111]
+      "
+          >
+            <Image
+              src="/assets/images/works/imusic/imusic-main-landscape.webp"
+              alt="Preview"
+              width={500}
+              height={300}
+              className="object-cover w-full h-full"
+            />
+          </div>
+        </div>
+
+        {/* RIGHT BUTTON */}
+        <div
+          className="
+      border border-black dark:border-white
+      px-8 py-4 
+      rounded-full
+      text-lg
+      font-inter
+      hover:bg-black hover:text-white
+      dark:hover:bg-white dark:hover:text-black
+      transition-all
+    "
+        >
+          Get in touch
+        </div>
+      </motion.div>
     </motion.section>
   );
 }
