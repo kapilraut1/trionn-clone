@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Cursor from "./Cursor";
+import HeroAnimate from "./HeroAnimate";
 
 const container = {
   hidden: { opacity: 0 },
@@ -132,11 +133,10 @@ export default function HeroBanner() {
           Explore work
         </div>
 
-        {/* CENTER FLOATING IMAGE */}
-        <div className="hidden md:block absolute left-1/2 top-[90%] -translate-x-1/2">
+        <div className="hidden md:block absolute left-1/2 -translate-x-1/2">
           <div
             className="
-        w-72 h-44
+        w-52 h-34
         rounded-2xl
         overflow-hidden
         border border-black/30 dark:border-white/20
@@ -153,8 +153,8 @@ export default function HeroBanner() {
             />
           </div>
         </div>
+        <HeroAnimate />
 
-        {/* RIGHT BUTTON */}
         <div
           className="
       border border-black dark:border-white

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Loading from "./components/Loading";
-import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import HeroBanner from "./components/Hero";
 import StatsSection from "./components/StatsSection";

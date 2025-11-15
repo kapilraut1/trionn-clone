@@ -16,7 +16,7 @@ const dirtyline = Oswald({
 });
 
 export const metadata = {
-  title: "TRIONN | Digital Wilderness",
+  title: "TRIONN | Crafting Award- Winning",
 };
 
 export default function RootLayout({ children }) {
