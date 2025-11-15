@@ -106,7 +106,7 @@ export default function HeroBanner() {
         />
       </motion.div>
 
-      {/* BUTTONS & CENTER IMAGE */}
+      {/* BUTTONS + CENTER IMAGE */}
       <motion.div
         variants={item}
         className="
@@ -123,8 +123,7 @@ export default function HeroBanner() {
       border border-black dark:border-white
       px-8 py-4
       rounded-full
-      text-lg
-      font-inter
+      text-lg font-inter
       hover:bg-black hover:text-white
       dark:hover:bg-white dark:hover:text-black
       transition-all
@@ -133,35 +132,15 @@ export default function HeroBanner() {
           Explore work
         </div>
 
-        <div className="hidden md:block absolute left-1/2 -translate-x-1/2">
-          <div
-            className="
-        w-52 h-34
-        rounded-2xl
-        overflow-hidden
-        border border-black/30 dark:border-white/20
-        shadow-xl
-        bg-white dark:bg-[#111]
-      "
-          >
-            <Image
-              src="/assets/images/works/imusic/imusic-main-landscape.webp"
-              alt="Preview"
-              width={500}
-              height={300}
-              className="object-cover w-full h-full"
-            />
-          </div>
-        </div>
-        <HeroAnimate />
+        {/* ONLY ONE IMAGE — THE ANIMATED ONE */}
 
+        {/* RIGHT BUTTON */}
         <div
           className="
       border border-black dark:border-white
       px-8 py-4 
       rounded-full
-      text-lg
-      font-inter
+      text-lg font-inter
       hover:bg-black hover:text-white
       dark:hover:bg-white dark:hover:text-black
       transition-all
@@ -170,6 +149,10 @@ export default function HeroBanner() {
           Get in touch
         </div>
       </motion.div>
+
+      <div className="-mt-[110px] relative z-1">
+        <HeroAnimate />
+      </div>
     </motion.section>
   );
 }
