@@ -2,32 +2,34 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroAnimate() {
   const containerRef = useRef(null);
-  const imageRef = useRef(null);
+  const videoWrapperRef = useRef(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top center",
-          end: "bottom+=1500 top",
-          scrub: 1.2,
-          pin: true,
-          pinSpacing: true,
-        },
+      gsap.set(videoWrapperRef.current, {
+        scale: 0.65,
       });
 
-      tl.to(imageRef.current, {
-        scale: 2.4,
-        y: 120,
-        ease: "power2.out",
-      });
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top center",
+            end: "bottom+=1200 top",
+            scrub: 1.2,
+            pin: true,
+            pinSpacing: true,
+          },
+        })
+        .to(videoWrapperRef.current, {
+          scale: 1.5, // zooms to fill parent
+          ease: "power2.out",
+        });
     });
 
     return () => ctx.revert();
@@ -38,25 +40,36 @@ export default function HeroAnimate() {
       ref={containerRef}
       className="
         relative
+        overflow-hidden
         flex items-center justify-center
-        w-[280px] h-40
-        md:w-[360px] md:h-[200px]
-        lg:w-[420px] lg:h-[230px]
+        rounded-3xl
+        w-[300px] h-[180px]
+        md:w-[420px] md:h-[260px]
+        lg:w-[520px] lg:h-80
       "
     >
-      <Image
-        ref={imageRef}
-        src="/assets/images/works/imusic/imusic-main-landscape.webp"
-        alt="Hero Preview"
-        width={200}
-        height={200}
+      <div
+        ref={videoWrapperRef}
         className="
-          rounded-3xl
-          object-cover
+          relative
           w-full h-full
+          rounded-3xl
           will-change-transform
         "
-      />
+      >
+        <video
+          src="/assets/images/video-file.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="
+            w-full h-full
+            object-cover
+            rounded-3xl
+          "
+        />
+      </div>
     </div>
   );
 }

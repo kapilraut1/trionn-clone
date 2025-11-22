@@ -150,7 +150,7 @@ export default function HeroBanner() {
         </div>
       </motion.div>
 
-      <div className="-mt-[110px] relative z-1">
+      <div className="-mt-[90px] relative w-full flex justify-center z-10">
         <HeroAnimate />
       </div>
     </motion.section>
